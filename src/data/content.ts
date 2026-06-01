@@ -165,12 +165,24 @@ export const llm = {
     { provider: 'Google',     model: 'Gemini 3.1 Pro',   line: 'Huge context window and strong multimodal reasoning, native to Google.' },
   ] as LLMModel[],
   gap:
-    'There are two families: closed models you reach through a service (the three above), and open models anyone can download and run. The open ones used to be years behind. Today they trail the frontier by roughly 4 months, about 8 points on Epoch AI\'s capability index. The gap is small and fairly steady, and the whole field is moving very fast.',
+    'There are two families of LLMs. Both matter, and they play different roles.',
+  gapPoints: [
+    {
+      label: 'Closed models',
+      tag: 'Closed',
+      text: 'You interact via a service (chat, API) but never see or run the underlying model. The three frontier models above are all closed. They are typically the most capable, and for company use we reach them through Copilot, which keeps the data inside a protected environment.',
+    },
+    {
+      label: 'Open-weight models',
+      tag: 'Open',
+      text: 'Anyone can download and run the model on their own systems. Many leading open models come from China (DeepSeek, Qwen, Kimi). Google and Mistral, the only significant European player, are also open. They are evolving fast: the gap to the closed frontier is now only about 4 months. Capable AI is becoming cheap and widely available.',
+    },
+  ] as { label: string; text: string; tag: string }[],
   chartNote: 'Illustrative, based on Epoch AI tracking.',
   chartSourceLabel: 'Source: Epoch AI',
   chartSourceUrl: 'https://epoch.ai/data-insights/open-closed-eci-gap',
   open:
-    'Open models worth knowing: DeepSeek (V4) and Alibaba\'s Qwen from China, and Google\'s Gemma family. Newer open frontiers like Kimi and GLM are close behind. The takeaway is not which one wins. It is that capable AI is becoming cheap and widely available, fast.',
+    'Open models worth knowing: DeepSeek (V4) and Alibaba\'s Qwen from China, Google\'s Gemma, and Mistral (France), the only significant European player. Newer open frontiers like Kimi and GLM are close behind. The takeaway is not which one wins. It is that capable AI is becoming cheap and widely available, fast.',
 };
 
 // ---- Categories intro ----

@@ -2,10 +2,17 @@ import { useReveal } from '../lib/useReveal';
 import { GapChart } from './GapChart';
 import type { LLMModel } from '../data/content';
 
+interface GapPoint {
+  label: string;
+  text: string;
+  tag: string;
+}
+
 interface LLMData {
   copilot: string;
   sota: LLMModel[];
   gap: string;
+  gapPoints?: GapPoint[];
   chartNote: string;
   chartSourceLabel: string;
   chartSourceUrl: string;
@@ -61,6 +68,21 @@ export function LLMState({ llm }: { llm: LLMData }) {
       <div ref={ref3} className="reveal">
         <p className="font-mono text-xs uppercase tracking-widest text-gb-muted mb-3">Open vs closed</p>
         <p className="text-gb-ink text-sm leading-relaxed mb-4 max-w-2xl">{llm.gap}</p>
+        {llm.gapPoints && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+            {llm.gapPoints.map((pt) => (
+              <div key={pt.label} className="rounded-card border border-gb-line bg-gb-surface px-5 py-4 shadow-card">
+                <div className="flex items-center gap-2 mb-2">
+                  <span className="px-2 py-0.5 rounded-pill bg-gb-soft text-gb-blue border border-gb-blue/20 text-xs font-mono font-medium">
+                    {pt.tag}
+                  </span>
+                  <p className="font-display font-semibold text-gb-navy text-sm">{pt.label}</p>
+                </div>
+                <p className="text-gb-muted text-xs leading-relaxed">{pt.text}</p>
+              </div>
+            ))}
+          </div>
+        )}
         <GapChart
           chartNote={llm.chartNote}
           chartSourceLabel={llm.chartSourceLabel}
