@@ -6,7 +6,6 @@ const NAV_LINKS = [
   { href: '#value',      label: 'Value' },
   { href: '#llms',       label: 'LLMs' },
   { href: '#hands-on',   label: 'Hands-on' },
-  { href: '#playground', label: 'Playground' },
 ];
 
 function useActiveSection() {

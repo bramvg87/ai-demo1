@@ -49,7 +49,36 @@ export default function App() {
 
         {/* 01 What is AI */}
         <Section id="what-is-ai" number="01" title="What is AI" intro={whatIsAI.intro}>
-          <AITimeline />
+          {/* -mx-6 cancels the section padding so the 1000px-min SVG never triggers a scrollbar on desktop */}
+          <div className="-mx-6">
+            <AITimeline />
+          </div>
+
+          {/* Supplementary context cards */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="rounded-xl bg-gb-soft border border-gb-line px-5 py-4">
+              <p className="font-mono text-xs uppercase tracking-widest text-gb-cyan mb-2">Why rule-based fails</p>
+              <p className="font-display font-semibold text-gb-navy text-sm mb-2">The cats and dogs problem</p>
+              <p className="text-gb-muted text-sm leading-relaxed">
+                You cannot write enough rules to describe "what makes a cat". Machine learning solves
+                this by showing the system thousands of labeled photos - it finds the patterns itself.
+                Deep learning (AlexNet, 2012) took this dramatically further: many-layered nets on GPUs
+                beat every hand-coded method by a wide margin. That result is why everything after it
+                became possible.
+              </p>
+            </div>
+            <div className="rounded-xl bg-gb-soft border border-gb-line px-5 py-4">
+              <p className="font-mono text-xs uppercase tracking-widest text-gb-cyan mb-2">Labeled vs unlabeled</p>
+              <p className="font-display font-semibold text-gb-navy text-sm mb-2">Where does unsupervised learning fit?</p>
+              <p className="text-gb-muted text-sm leading-relaxed">
+                AlexNet is supervised: every training image had a human label ("golden retriever",
+                "tabby cat"). Unsupervised learning needs no labels - it finds clusters or anomalies
+                in raw data. Today's LLMs use self-supervised learning: predict the next word, where
+                the text itself provides the training signal. No costly human labeling at scale needed.
+                That is how GPT-3 was trained on hundreds of billions of words.
+              </p>
+            </div>
+          </div>
         </Section>
 
         {/* 02 How AI creates value */}
