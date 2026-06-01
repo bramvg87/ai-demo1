@@ -42,10 +42,9 @@ export function Nav() {
       aria-label="Main navigation"
     >
       <div className="max-w-5xl mx-auto px-6 h-14 flex items-center justify-between gap-6">
-        {/* Wordmark */}
-        <a href="#" className="flex items-center gap-1.5 shrink-0" aria-label="Genabyte - home">
+        {/* Home anchor */}
+        <a href="#" className="shrink-0" aria-label="Top of page">
           <span className="text-gb-cyan text-xl leading-none font-bold">•</span>
-          <span className="font-display text-gb-navy font-semibold text-lg tracking-tight">Genabyte</span>
         </a>
 
         {/* Desktop links */}

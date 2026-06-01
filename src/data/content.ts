@@ -21,6 +21,15 @@ export interface LLMModel {
   line: string;
 }
 
+export interface LabImage {
+  src: string;
+  alt: string;
+  caption?: string;
+  instruction?: string;
+  downloadable?: boolean;
+  downloadFilename?: string;
+}
+
 export interface Lab {
   id: string;
   title: string;
@@ -36,6 +45,8 @@ export interface Lab {
   workflow?: string[];
   followUp?: string;
   optionalAgent?: string;
+  extraPrompts?: { label: string; text: string }[];
+  labImages?: LabImage[];
 }
 
 export interface Category {
@@ -147,7 +158,7 @@ export const llm = {
   intro:
     'Now zoom in on the tools we actually use. Today\'s most useful AI for office work is the large language model, or LLM. Here is the landscape and where our tools sit in it.',
   copilot:
-    'The default tool for company work is Microsoft 365 Copilot. It runs leading models inside Microsoft\'s enterprise environment with commercial data protection, which means it can be used with confidential company information within the organisation\'s IT policy. That safe boundary is the main reason it is the default for anything touching company data.',
+    'The default tool for company work is Microsoft 365 Copilot. It runs OpenAI models (GPT series) inside Microsoft\'s enterprise environment with commercial data protection, which means it can be used with confidential company information within the organisation\'s IT policy. That safe boundary is the main reason it is the default for anything touching company data.',
   sota: [
     { provider: 'OpenAI',     model: 'GPT-5.5',          line: 'The broad all-rounder with the largest ecosystem.' },
     { provider: 'Anthropic',  model: 'Claude Opus 4.8',  line: 'Strongest at long, careful writing, analysis and reasoning.' },
@@ -176,7 +187,7 @@ export const categories: Category[] = [
     label: 'Text',
     valueTag: 'Win: faster drafts and sharper thinking. Mostly time saved, plus better quality on everything you read and write.',
     marker: 'Efficiency + Effectiveness',
-    intro: 'Text is where the quickest wins are. Most office work is reading and writing. Here are seven ways to speed it up and sharpen it.',
+    intro: 'Text is where the quickest wins are. Most office work is reading and writing. Here are eight ways to speed it up and sharpen it.',
     labs: [
       {
         id: 'text-spellcheck',
@@ -187,6 +198,15 @@ export const categories: Category[] = [
 
 Text:
 [paste your draft, for example: "Hi team, following up on yesterdays meeting about the line 3 changover. We descided to trial the new setup proceedure next week, can everyone confirm there availability."]`,
+        extraPrompts: [
+          {
+            label: 'Example 2 - improve readability',
+            text: `Proofread and improve the message below for clarity and readability. Fix any typos and grammatical errors, and make it easier to read without changing the meaning.
+
+Text:
+[paste your draft, for example: "hej just wanted to check in on the suppplier delivery its now 3 days late and we still havent recieved any confirmation from there side. can you maybe follow up with them and let me know what the status is because we need this for the production plan next week or we might have a problem with the schedule"]`,
+          },
+        ],
         howToUse: [
           'Open Copilot (or Claude).',
           'Paste the prompt.',
@@ -194,6 +214,39 @@ Text:
           'Send.',
         ],
         tip: 'Ask for British or US English if it matters.',
+      },
+      {
+        id: 'text-meeting-email',
+        title: 'Email from meeting notes',
+        tools: ['Copilot'],
+        scenario: 'You have handwritten meeting notes or a rough transcript and need to turn them into a clear follow-up email with a summary and action tracker.',
+        labImages: [
+          {
+            src: '/meeting-notes.png',
+            alt: 'Handwritten meeting notes: Go-Live Readiness Meeting Line 7',
+            caption: 'Example: handwritten meeting notes from a go-live readiness meeting.',
+            instruction: 'Download this image and upload it to Copilot.',
+            downloadable: true,
+            downloadFilename: 'meeting-notes.png',
+          },
+        ],
+        prompt: `Analyze the attached image of handwritten meeting notes and draft a professional follow-up email.
+Requirements:
+- Extract the key decisions, risks, deadlines, and action items.
+- Organize them into a clear meeting summary.
+- Create an action tracker table with Owner, Action, and Due Date.
+- Highlight any open issues requiring escalation.
+- Use a concise, business-professional tone.
+- End with a clear summary of next steps and responsibilities.
+Assume the audience consists of project stakeholders who attended the meeting.`,
+        howToUse: [
+          'Download the image above using the Download button.',
+          'Open Copilot Chat.',
+          'Upload the image using the attachment icon in the text bar.',
+          'Paste the prompt and send.',
+          'Use your own meeting notes photo for real situations, via Copilot only.',
+        ],
+        tip: 'A photo of a whiteboard or handwritten notes works the same way. Use Copilot for anything containing real project or company information.',
       },
       {
         id: 'text-tone',
@@ -314,6 +367,54 @@ Be concise and factual. Never invent numbers. If something is unclear or missing
           'Paste that prompt into the image generator to create the image.',
         ],
         tip: 'Letting the model write the prompt usually beats writing it yourself.',
+        extraPrompts: [
+          {
+            label: 'Example: ask for a prompt first (step 1)',
+            text: `I want to generate a photorealistic image of handwritten meeting notes on a piece of paper, it needs to look like a scan, it needs to be a business meeting about a discussion to go live with a new production line with some action items to be taken.
+
+Do not generate the image yet. First write me a detailed image generation prompt I can use, covering: subject, style, visual details, mood, and any relevant text content to include in the notes.`,
+          },
+          {
+            label: 'Example: the resulting detailed prompt (step 2)',
+            text: `Create a photorealistic scanned image of a single sheet of white A4 paper lying flat on a desk. The paper contains handwritten business meeting notes in blue ballpoint pen. The handwriting should look natural and human, slightly messy but readable, as if written during a factory project meeting.
+
+The page title at the top: "Go-Live Readiness Meeting - Line 7"
+Date: "May 28, 2026"
+
+The handwritten notes should include:
+- Mechanical installation complete (checkmark)
+- Electrical punch list: 12 items open
+- Safety validation scheduled 03/06
+- Operator training (shift A & B)
+- Dry run planned Friday
+- Production trial Monday
+- Quality approval pending
+
+A section called "Risks":
+- Spare parts not yet on site
+- HMI recipe issue
+- Packaging conveyor speed mismatch
+- Need final sign-off from maintenance
+
+A section called "Actions":
+1. Jan: close electrical issues by Thursday
+2. Sarah: confirm operator training attendance
+3. Peter: validate safety interlocks
+4. IT: OPC connection to MES
+5. Quality: release trial batch protocol
+
+Include realistic handwritten features: some words underlined, several checkmarks, a few arrows between topics, one item crossed out and rewritten, small margin notes, a circled "GO LIVE" note near the bottom, a rough timeline sketch in one corner.
+
+The image should look like it was scanned on an office scanner: slight paper shadows, very light scanner artifacts, high-resolution, black-and-white scanner appearance with visible blue pen writing. No digital fonts anywhere, entirely handwritten, corporate manufacturing project context.`,
+          },
+        ],
+        labImages: [
+          {
+            src: '/meeting-notes.png',
+            alt: 'AI-generated example: scanned handwritten meeting notes for Go-Live Readiness Meeting Line 7',
+            caption: 'Example output from the prompt above.',
+          },
+        ],
       },
       {
         id: 'images-reference',

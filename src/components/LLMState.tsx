@@ -30,10 +30,8 @@ export function LLMState({ llm }: { llm: LLMData }) {
       <div ref={ref1} className="reveal">
         <div className="rounded-card bg-gradient-to-r from-gb-soft to-gb-surface border border-gb-blue/20 p-5 sm:p-6 shadow-card">
           <div className="flex items-start gap-4">
-            <div className="shrink-0 w-10 h-10 rounded-xl bg-[#0078d4] flex items-center justify-center">
-              <svg viewBox="0 0 24 24" fill="white" className="w-5 h-5">
-                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm-1-5h2v2h-2zm0-8h2v6h-2z" />
-              </svg>
+            <div className="shrink-0 w-12 h-12">
+              <img src="/copilot-logo.png" alt="Microsoft Copilot" className="w-full h-full object-contain" />
             </div>
             <div>
               <p className="font-display font-semibold text-gb-navy mb-1">Microsoft 365 Copilot - the default for company data</p>

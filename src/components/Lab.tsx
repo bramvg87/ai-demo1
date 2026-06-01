@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ChevronDown, ChevronUp, CheckCircle, Circle } from 'lucide-react';
+import { ChevronDown, ChevronUp, CheckCircle, Circle, Download } from 'lucide-react';
 import { ToolBadge } from './ToolBadge';
 import { PromptBlock } from './PromptBlock';
 import { HowToUse } from './HowToUse';
@@ -90,6 +90,35 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
               <PromptBlock text={lab.generatePrompt} label="Generate demo data" />
             </>
           )}
+          {lab.extraPrompts && lab.extraPrompts.map((ep, i) => (
+            <div key={i}>
+              <p className="text-xs font-mono uppercase tracking-widest text-gb-muted mt-2">{ep.label}</p>
+              <PromptBlock text={ep.text} label={ep.label} />
+            </div>
+          ))}
+          {lab.labImages && lab.labImages.map((img, i) => (
+            <div key={i} className="rounded-card border border-gb-line overflow-hidden bg-gb-soft/40">
+              <img src={img.src} alt={img.alt} className="w-full object-contain max-h-96" />
+              {(img.caption || img.instruction || img.downloadable) && (
+                <div className="px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+                  <div className="flex-1">
+                    {img.caption && <p className="text-gb-muted text-xs mb-0.5">{img.caption}</p>}
+                    {img.instruction && <p className="text-gb-ink text-sm font-medium">{img.instruction}</p>}
+                  </div>
+                  {img.downloadable && (
+                    <a
+                      href={img.src}
+                      download={img.downloadFilename ?? img.src.split('/').pop()}
+                      className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-gb-coral text-white text-xs font-semibold hover:bg-gb-coral/90 transition-colors"
+                    >
+                      <Download className="w-3.5 h-3.5" />
+                      Download
+                    </a>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
           {lab.workflow && lab.workflow.length > 0 && (
             <div>
               <p className="text-xs font-mono uppercase tracking-widest text-gb-muted mb-2">Workflow</p>
