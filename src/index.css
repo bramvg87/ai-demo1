@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --gb-navy:        #0A2540;
+  --gb-blue:        #1466E0;
+  --gb-blue-bright: #2E8FFF;
+  --gb-cyan:        #17B8C9;
+  --gb-coral:       #FF6B4A;
+  --gb-ink:         #0E2233;
+  --gb-muted:       #5A6B7B;
+  --gb-bg:          #F6F9FD;
+  --gb-surface:     #FFFFFF;
+  --gb-soft:        #EAF2FE;
+  --gb-line:        #E2E9F2;
+  --gb-code-bg:     #0B2138;
+  --gb-code-fg:     #E6EEF8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Hanken Grotesk', sans-serif;
+  background-color: var(--gb-bg);
+  color: var(--gb-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dot grid */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(20,102,224,0.12) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Radial glow top-right */
+.hero-glow::after {
+  content: '';
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(23,184,201,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal-delay-1,
+  .reveal-delay-2,
+  .reveal-delay-3,
+  .reveal-delay-4,
+  .reveal-delay-5 {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Hero stagger */
+.hero-anim {
+  animation: heroRise 0.7s ease forwards;
+  opacity: 0;
+}
+
+.hero-anim-1 { animation-delay: 0.1s; }
+.hero-anim-2 { animation-delay: 0.25s; }
+.hero-anim-3 { animation-delay: 0.4s; }
+.hero-anim-4 { animation-delay: 0.55s; }
+
+@keyframes heroRise {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-anim { animation: none; opacity: 1; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--gb-bg); }
+::-webkit-scrollbar-thumb { background: var(--gb-line); border-radius: 3px; }
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--gb-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -1,0 +1,445 @@
+export interface AIType {
+  label: string;
+  desc: string;
+}
+
+export interface Milestone {
+  title: string;
+  significance: string;
+  youtubeId: string;
+  year: string;
+}
+
+export interface MatrixQuadrant {
+  label: string;
+  example: string;
+}
+
+export interface LLMModel {
+  provider: string;
+  model: string;
+  line: string;
+}
+
+export interface Lab {
+  id: string;
+  title: string;
+  tools: string[];
+  scenario?: string;
+  whatYouLearn?: string;
+  prompt?: string;
+  reusablePrompt?: string;
+  howToUse?: string[];
+  tip?: string;
+  file?: string;
+  generatePrompt?: string;
+  workflow?: string[];
+  followUp?: string;
+  optionalAgent?: string;
+}
+
+export interface Category {
+  id: string;
+  label: string;
+  valueTag: string;
+  marker: string;
+  intro: string;
+  labs: Lab[];
+}
+
+// ---- Hero ----
+
+export const hero = {
+  eyebrow: 'Genabyte - AI Demo 1',
+  title: 'AI in the office, hands on',
+  intro:
+    'A practical look at what AI is, how it creates value, where it stands today, and how to use it to work faster and better. No code, no hype. Try the prompts as you go: copy, paste, and see what changes.',
+};
+
+// ---- What is AI ----
+
+export const whatIsAI = {
+  intro:
+    'AI is a broad umbrella term, not one thing. It covers everything from simple rules to systems that learn. You do not need the maths. You do need a feel for the main building blocks, so you can follow the conversation and judge where AI fits on the floor.',
+  types: [
+    { label: 'Rule-based systems', desc: 'Hand-written if-this-then-that rules. Reliable, but they cannot learn.' },
+    { label: 'Machine learning', desc: 'Finds patterns in data instead of being told the rules. Forecasting, predictive maintenance.' },
+    { label: 'Deep learning', desc: 'Layered machine learning that spots patterns too subtle to write down.' },
+    { label: 'Computer vision', desc: 'Machines that see. Inspecting shape, fill, labels and dates on a line.' },
+    { label: 'Reinforcement learning', desc: 'Learns by trial and reward, by trial and error.' },
+    { label: 'Transformers', desc: 'The 2017 design that finally cracked language. The engine under modern chatbots.' },
+    { label: 'Generative AI', desc: 'Creates text, images and plans on demand. ChatGPT, Copilot, Claude.' },
+    { label: 'AI agents', desc: 'Does not just answer, it acts: takes steps and uses tools to finish a task.' },
+  ] as AIType[],
+  milestones: [
+    {
+      title: 'IBM Watson wins Jeopardy',
+      significance:
+        'A computer beat the best human quiz champions at understanding tricky natural language. The moment machines handling language went mainstream.',
+      youtubeId: 'Sp4q60BsHoY',
+      year: '2011',
+    },
+    {
+      title: 'DeepMind learns Atari by trial and error',
+      significance:
+        'DeepMind agents learned to play Atari games from scratch, with no instructions, just trial, reward and repetition. The same reinforcement-learning idea behind AlphaGo.',
+      youtubeId: 'Ih8EfvOzBOY',
+      year: '2015',
+    },
+    {
+      title: 'AlphaGo beats Lee Sedol',
+      significance:
+        'An AI mastered Go, a game thought to need human intuition, and beat a world champion 4 to 1. It learned partly by playing itself, millions of times.',
+      youtubeId: '8tq1C8spV_g',
+      year: '2016',
+    },
+  ] as Milestone[],
+  bridge:
+    'The thread connecting these: from following rules, to learning from data, to learning by trial and error. Each step needed less hand-holding from us.',
+};
+
+// ---- Value ----
+
+export const value = {
+  mechanism: {
+    heading: 'How value gets created: act sooner',
+    caption:
+      'The core idea behind Industry 4.0 is simple. When a problem occurs, value leaks away while you wait: time to notice it, time to analyse it, time to decide, and time to act. The longer that chain, the more output you lose. Shorten the chain and you protect value. In a plant that shows up as better quality, higher labour efficiency, better reliability, less waste and less energy use.',
+    leftPanelTitle: 'Traditional reaction',
+    leftStages: [
+      'Event: production out of spec',
+      'Insights available: deviation is known',
+      'Analysis completed: deviation understood',
+      'Measure approved: change defined',
+      'Measure takes effect: process adapted',
+    ],
+    leftLatencies: ['Insight latency', 'Analysis latency', 'Decision latency', 'Action latency'],
+    leftLatencyMeanings: [
+      'Time until the deviation is detected and visible.',
+      'Time to understand the root cause.',
+      'Time to agree on and approve the response.',
+      'Time until the fix actually reaches the process.',
+    ],
+    leftEndNote: 'Lost output and out-of-spec product while the chain runs.',
+    rightPanelTitle: 'Connected (Industry 4.0) reaction',
+    rightNote: 'The same steps, compressed close to the event. The counter-measure takes effect early.',
+    rightHighlight: 'time saved / value gained',
+    enablers: [
+      'A. Real-time capability and systems integration',
+      'B. Big data analytics, machine learning and AI',
+      'C. Decision support and automated decision making',
+      'D. Vertical and horizontal process integration, cyber-physical systems',
+    ],
+    credit: 'Concept based on the Industrie 4.0 framework, RWTH Aachen University.',
+  },
+  fotf: 'Factory of the Future, or FOTF, is shorthand for plants that run on connected, real-time data so they can react faster and decide better. (Not everyone uses the term the same way, so when it comes up, this is what we mean.) The AI applied in these programmes today is mostly machine learning, for example vision systems that spot a defect and trigger a response. That is detect-and-react. Today we look at a different lever: using LLMs to make everyday office work faster and better.',
+  office:
+    'On the shopfloor you can often put a number on that value. In the office it is harder. Most of what follows makes you work faster (efficiency) and produce better outcomes (effectiveness). The time saved is real, but hard cash savings are debatable and easy to overclaim. So be honest: aim for faster and better, and treat tangible euro savings as a bonus you prove case by case.',
+  matrix: {
+    xAxis: 'Efficiency (cheaper, less time)',
+    yAxis: 'Effectiveness (better quality)',
+    quadrants: {
+      bottomLeft:  { label: 'Low value',     example: 'Effort with no real gain. Skip it.' },
+      bottomRight: { label: 'Faster',        example: 'Same output, less time. Example: drafting a routine email in seconds.' },
+      topLeft:     { label: 'Better',        example: 'Higher quality, similar effort. Example: a sharper risk review of a contract.' },
+      topRight:    { label: 'Both - the goal', example: 'Better and faster together. Example: a better plan in less time.' },
+    },
+  },
+};
+
+// ---- LLM ----
+
+export const llm = {
+  intro:
+    'Now zoom in on the tools we actually use. Today\'s most useful AI for office work is the large language model, or LLM. Here is the landscape and where our tools sit in it.',
+  copilot:
+    'The default tool for company work is Microsoft 365 Copilot. It runs leading models inside Microsoft\'s enterprise environment with commercial data protection, which means it can be used with confidential company information within the organisation\'s IT policy. That safe boundary is the main reason it is the default for anything touching company data.',
+  sota: [
+    { provider: 'OpenAI',     model: 'GPT-5.5',          line: 'The broad all-rounder with the largest ecosystem.' },
+    { provider: 'Anthropic',  model: 'Claude Opus 4.8',  line: 'Strongest at long, careful writing, analysis and reasoning.' },
+    { provider: 'Google',     model: 'Gemini 3.1 Pro',   line: 'Huge context window and strong multimodal reasoning, native to Google.' },
+  ] as LLMModel[],
+  gap:
+    'There are two families: closed models you reach through a service (the three above), and open models anyone can download and run. The open ones used to be years behind. Today they trail the frontier by roughly 4 months, about 8 points on Epoch AI\'s capability index. The gap is small and fairly steady, and the whole field is moving very fast.',
+  chartNote: 'Illustrative, based on Epoch AI tracking.',
+  chartSourceLabel: 'Source: Epoch AI',
+  chartSourceUrl: 'https://epoch.ai/data-insights/open-closed-eci-gap',
+  open:
+    'Open models worth knowing: DeepSeek (V4) and Alibaba\'s Qwen from China, and Google\'s Gemma family. Newer open frontiers like Kimi and GLM are close behind. The takeaway is not which one wins. It is that capable AI is becoming cheap and widely available, fast.',
+};
+
+// ---- Categories intro ----
+
+export const categoriesIntro =
+  'In value terms, almost everything here is an efficiency and effectiveness gain: you work faster and the outcome is better. The tangible euro savings are usually hard to isolate in office work, so each category is labelled with the win you can actually feel.';
+
+// ---- Categories ----
+
+export const categories: Category[] = [
+  // ---- TEXT ----
+  {
+    id: 'text',
+    label: 'Text',
+    valueTag: 'Win: faster drafts and sharper thinking. Mostly time saved, plus better quality on everything you read and write.',
+    marker: 'Efficiency + Effectiveness',
+    intro: 'Text is where the quickest wins are. Most office work is reading and writing. Here are seven ways to speed it up and sharpen it.',
+    labs: [
+      {
+        id: 'text-spellcheck',
+        title: 'Review and spellcheck',
+        tools: ['Copilot', 'Claude'],
+        scenario: 'You have written something and want it clean before it goes out.',
+        prompt: `Proofread the text below. Fix spelling, grammar and punctuation, and improve clarity and flow without changing my meaning or my tone. Return the corrected version first, then a short list of the main changes you made.
+
+Text:
+[paste your draft, for example: "Hi team, following up on yesterdays meeting about the line 3 changover. We descided to trial the new setup proceedure next week, can everyone confirm there availability."]`,
+        howToUse: [
+          'Open Copilot (or Claude).',
+          'Paste the prompt.',
+          'Keep the example or replace it with your own draft.',
+          'Send.',
+        ],
+        tip: 'Ask for British or US English if it matters.',
+      },
+      {
+        id: 'text-tone',
+        title: 'Change tone of voice',
+        tools: ['Copilot', 'Claude'],
+        prompt: `Rewrite the message below in three versions: (1) formal and executive, (2) warm and collaborative, (3) short and direct. Keep the core message identical in all three.
+
+Message:
+[your message, for example: "We need the maintenance report by Thursday or we cannot close the monthly review."]`,
+        howToUse: [
+          'Paste into Copilot.',
+          'Keep or swap the message.',
+          'Pick the version that fits the reader.',
+        ],
+        tip: 'Name the reader, for example "for the executive committee" or "for a supplier", to tune it better.',
+      },
+      {
+        id: 'text-ideation',
+        title: 'Ideation: what am I missing',
+        tools: ['Copilot', 'Claude', 'ChatGPT'],
+        scenario: 'You have a plan and want a second pair of eyes before you commit.',
+        prompt: `I am preparing [what you are working on, for example: a proposal to reduce changeover time on a snack packaging line]. My current thinking:
+[your points, for example: "1) standardise tools at each station, 2) pre-stage materials before the line stops, 3) train a small SMED team"]
+
+Act as a critical, experienced colleague. What am I missing? List blind spots, risks, stakeholders I may have overlooked, and the hard questions leadership will likely ask.`,
+      },
+      {
+        id: 'text-sparring',
+        title: 'Sparring partner',
+        tools: ['Copilot', 'Claude', 'ChatGPT'],
+        prompt: `We want to achieve this goal: [goal, for example: cut energy use in our frozen storage by 10 percent this year]. Our current approach:
+[approach, for example: "raise the setpoint by one degree, fit strip curtains on the doors, and move loading to off-peak hours"]
+
+Be my sparring partner. Challenge the approach, name the assumptions we are making, propose two alternative approaches, and tell me what would make each one succeed or fail.`,
+        tip: 'Push back on its answer. The second and third exchange is usually where it gets useful.',
+      },
+      {
+        id: 'text-summarise',
+        title: 'Summarise and analyse',
+        tools: ['Copilot', 'Claude'],
+        scenario: 'You have a long document and need to know what matters.',
+        prompt: `Attached is a supplier contract. Do three things:
+1. Summarise it in 8 bullet points.
+2. List the clauses most relevant to delivery, quality and liability, with the section number.
+3. Flag anything unusual or risky for us.
+Give the answer first, then show where each point comes from.
+
+[If you have no file handy, use the sample contract from this lab, or paste the contract text here.]`,
+        file: 'sample-contract-excerpt.md',
+        generatePrompt: `Write a realistic but fictional one-page supplier service agreement excerpt between a food manufacturer and an ingredient supplier. Use numbered clauses on delivery windows, quality and rejection, pricing, liability and termination. Make one liability clause slightly unfavourable to the buyer. Output as Markdown.`,
+        howToUse: [
+          'In Copilot, attach the file (or a real, approved document).',
+          'Paste the prompt.',
+          'For confidential contracts, use Copilot, not a public tool.',
+        ],
+      },
+      {
+        id: 'text-email',
+        title: 'Email in your style',
+        tools: ['Copilot'],
+        scenario: 'You send similar emails often and want them in your own voice, fast.',
+        prompt: `Write an email to [recipient, for example: the plant manager]. I need to convey three things: (a) [for example: the new label printer is installed and live], (b) [for example: two operators still need a 30 minute training], (c) [for example: I propose we run a short test batch on Friday]. Tone: professional and concise, under 150 words. Write it in my style, based on the example emails below.
+
+My past emails for style:
+[paste one or two of your own emails here]`,
+        tip: 'The more you use Copilot in Outlook, the better it learns your style from your own mailbox. Giving examples speeds that up.',
+      },
+      {
+        id: 'text-agent',
+        title: 'Agentic AI: a reusable assistant',
+        tools: ['Copilot', 'Claude'],
+        scenario:
+          'You do the same kind of task often. Instead of re-explaining every time, write the instructions once and reuse them. Think of it like briefing a trainee: give the role, the standing instructions and a few examples, and from then on it just does the job. The prompt below is generic, so it works for any operations notes, in any chat, with no special features needed.',
+        whatYouLearn:
+          'Turn a repeatable task into a reusable prompt you can paste into any chat. Optionally publish it as a Copilot agent later, if your tenant has that enabled.',
+        reusablePrompt: `You are OpsBrief, an assistant for operations managers in a food manufacturing company. Your one job: turn raw notes, data or transcripts into a clear, structured leadership brief.
+
+Whenever I share material, always produce:
+1. Headline: the single most important thing leadership must know, in one sentence.
+2. Key points: 3 to 5 bullets, each with the fact and why it matters.
+3. Risks and watch-outs.
+4. Decisions needed, and who must decide.
+5. Suggested next actions, each with an owner.
+
+Be concise and factual. Never invent numbers. If something is unclear or missing, say so. Respond in English, unless I write in Dutch, then respond in Dutch.`,
+        howToUse: [
+          'Copy the prompt above and keep it handy (a saved note, or a saved prompt in your tool).',
+          'At the start of a chat in Copilot or Claude, paste it once to set up the assistant for the session.',
+          'Then paste your notes or attach a file, and it returns the brief.',
+          'Reuse it any time by pasting it again. It is generic, so it fits any operations notes.',
+        ],
+        followUp: `Here are my raw notes from this week's S&OP meeting. Prepare the leadership brief.
+[paste your notes, or attach the sample notes file from this lab]`,
+        file: 'sample-meeting-notes.md',
+        optionalAgent:
+          'Level up (only if Microsoft Copilot Agents and the Describe flow are enabled for your tenant): publish this once so the team can reuse it without pasting. Open Copilot Chat, go to Agents, Create a new agent, switch to Describe, paste the prompt, run it, adjust the name, then Publish. Note: in the test view you cannot upload files; publish first, then open the published agent to attach files. This step is optional. The reusable prompt above works on its own.',
+        tip: 'Reusable means write once, use forever. Save it and share it with the team. It needs no special features to work.',
+      },
+    ],
+  },
+
+  // ---- IMAGES ----
+  {
+    id: 'images',
+    label: 'Images',
+    valueTag: 'Win: usable visuals with less back and forth. Mostly better outcomes and quicker iterations.',
+    marker: 'Effectiveness (+ Efficiency)',
+    intro: 'Image generators are easy to misuse. Three simple techniques get far better, more usable results.',
+    labs: [
+      {
+        id: 'images-prompt-first',
+        title: 'Technique 1: prompt first',
+        tools: ['Copilot', 'ChatGPT'],
+        prompt: `I want to create [what, for example: a clean header image for an internal digital transformation newsletter]. Do not generate anything yet. First write me three detailed image prompts, each in a different style (corporate, abstract, photographic). For each, include subject, style, colours, mood and aspect ratio.`,
+        howToUse: [
+          'Run this first.',
+          'Pick the prompt you like.',
+          'Paste that prompt into the image generator to create the image.',
+        ],
+        tip: 'Letting the model write the prompt usually beats writing it yourself.',
+      },
+      {
+        id: 'images-reference',
+        title: 'Technique 2: reference image or sketch',
+        tools: ['Copilot', 'ChatGPT'],
+        prompt: `Here is a rough sketch or reference image of what I want [attach your sketch or photo]. Recreate it as a clean, professional [what, for example: a process diagram for a packaging line]. Keep the layout and key elements, improve the styling, and use these brand colours: [hex codes, for example: #1466E0 and #17B8C9].`,
+        tip: 'Even a phone photo of a whiteboard drawing works as a reference.',
+      },
+      {
+        id: 'images-svg',
+        title: 'Technique 3: editable SVG logo, then refine in Affinity',
+        tools: ['Copilot', 'Claude'],
+        scenario:
+          'Image generators give you a flat picture you cannot edit. Ask for SVG instead and you get a true vector you can open and change. Example here: a logo for "Project Octopus", a fictive programme that connects multiple systems into one and improves the user experience.',
+        prompt: `Create a simple, modern logo for "Project Octopus" as clean SVG code. Project Octopus is an internal programme that connects multiple systems into one and improves the user experience, so an octopus or a connected-nodes motif works well. Style: minimal, geometric, two colours (deep blue #1466E0 and cyan #17B8C9). Requirements: one valid standalone SVG, a set viewBox, no external fonts (use a common web-safe font or convert text to paths), reasonable dimensions. Output only the SVG code in a code block.`,
+        workflow: [
+          'Run the prompt in Copilot or Claude.',
+          'Copy the SVG code into a plain text file and save it as project-octopus.svg.',
+          'Open it in Affinity Designer (File, Open). Every shape, colour and curve is now editable.',
+          'Refine, then export to PNG, PDF or SVG.',
+        ],
+        file: 'project-octopus-logo.svg',
+        tip: 'Great for first drafts of logos, icons and simple diagrams that you then polish by hand.',
+      },
+    ],
+  },
+
+  // ---- ANALYSIS ----
+  {
+    id: 'analysis',
+    label: 'Analysis',
+    valueTag: 'Win: answers from data without waiting on someone else. Time saved and better-informed decisions.',
+    marker: 'Efficiency + Effectiveness',
+    intro: 'You do not need a data team to get answers from a spreadsheet. Generate or upload data, then just ask.',
+    labs: [
+      {
+        id: 'analysis-generate',
+        title: 'Generate a sample dataset',
+        tools: ['Copilot', 'Claude', 'ChatGPT'],
+        prompt: `Generate a realistic but fictional S&OP dataset as CSV that I can download. 24 rows: 4 product families (Frozen Pizza, Ready Meals, Snack Bars, Soups) across 6 months. Columns: Month, ProductFamily, ForecastUnits, ActualSalesUnits, ProductionUnits, ClosingStockUnits, ForecastAccuracyPct. Make the numbers plausible with some forecast error and mild seasonality, and make one family clearly less accurate than the others. Output only the CSV.`,
+        howToUse: [
+          'Run it, then download or copy the CSV.',
+          'Or skip this and use the ready demo file below.',
+        ],
+        file: 'sample-snop-data.csv',
+      },
+      {
+        id: 'analysis-questions',
+        title: 'Ask questions about the data',
+        tools: ['Copilot', 'Claude', 'ChatGPT'],
+        prompt: `Attached is our S&OP data. Answer these, giving the answer first and the supporting numbers second:
+1. Which product family has the worst forecast accuracy, and in which months?
+2. Where did production deviate most from sales? Flag possible overproduction or stockout risk.
+3. Give me 3 insights and 2 recommended actions for leadership.
+
+[Attach the sample data file from this lab, or your own approved export.]`,
+        howToUse: [
+          'Attach the CSV.',
+          'Paste the prompt.',
+          'In Copilot you can do this directly on a real sheet in Excel.',
+        ],
+        tip: 'Ask follow-ups. "Show that as a table by month" or "which family looks worst" work well.',
+      },
+    ],
+  },
+
+  // ---- FULL DOCUMENT GENERATION ----
+  {
+    id: 'documents',
+    label: 'Full document generation',
+    valueTag: 'Win: from blank page to a solid draft in minutes. Mostly time saved on structure and first drafts.',
+    marker: 'Efficiency (+ Effectiveness)',
+    intro: 'From a blank page to a solid first draft in minutes: templates, outlines and full drafts.',
+    labs: [
+      {
+        id: 'docs-template',
+        title: 'Generate a reusable template',
+        tools: ['Copilot', 'Claude'],
+        prompt: `Create a reusable template for a monthly operations report for a food manufacturing plant. Include these sections, each with one line of guidance underneath: Safety, Quality and Waste, OEE and Downtime, Energy, Cost and Productivity, Key Risks, Decisions Needed. Output as clean Markdown I can reuse every month.`,
+        file: 'ops-report-template.md',
+      },
+      {
+        id: 'docs-outline',
+        title: 'Generate a presentation outline',
+        tools: ['Claude', 'Copilot'],
+        scenario: 'A fictive 2027 budget round for the Operations business unit of a food manufacturer.',
+        prompt: `Create the outline for a 12-slide presentation for a fictive 2027 budget round for the Operations business unit of a food manufacturer. Audience: business unit leadership at executive committee level. For each slide give a title, 3 to 4 bullet points, and a suggested visual. Cover: context and market, last year's performance, productivity initiatives, capex requests, energy and sustainability, key risks, and the ask. Keep it sharp and executive.`,
+        file: 'budget-presentation-outline.md',
+        howToUse: [
+          'Run the prompt to get the outline.',
+          'In Claude: paste the outline and ask it to draft the speaker content per slide, or build the slides.',
+          'In Office: use Copilot in PowerPoint to turn the outline into slides, and Copilot in Outlook to draft the cover note.',
+        ],
+        tip: 'Outline first, then build. It keeps the structure tight and saves rework.',
+      },
+    ],
+  },
+];
+
+// ---- Playground ----
+
+export const playground = {
+  title: 'Practice in the playground',
+  body:
+    'Want more reps? The playground is an external sandbox with guided hands-on labs and Copilot-style examples. It is a complement to this page, in a different style. Open it in a new tab and experiment.',
+  url: 'https://playground.rework.company/',
+  note: 'Login as shared in the session.',
+};
+
+// ---- Rules ----
+
+export const rules = {
+  title: 'How to get the most out of this',
+  items: [
+    'Every prompt here is copy-ready and already has an example inside the [brackets]. Run it as is to see what happens, then replace the bracketed parts with your own details.',
+    'Each lab tells you which tool to use, where to paste, and what to attach. Follow the how-to note.',
+    'For anything confidential or with company data, use Copilot. It runs in a safe environment. Do not paste confidential or personal data into public tools.',
+    'When a lab needs a file, you have two options: download the ready demo file, or run the generate-your-own prompt. The demo data is always fictional.',
+    'Start simple, then add context: who the AI should be (role), the situation (context), the job (task), the format you want, and the tone. More context, better output.',
+    'There is no single correct prompt. Iterate. Ask follow-ups. Compare Copilot, Claude and ChatGPT on the same task to feel the differences.',
+    'Use it to be both faster and better. Save the time, and raise the quality.',
+  ],
+};
