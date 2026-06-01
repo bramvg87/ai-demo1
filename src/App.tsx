@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { EmailGate } from './components/EmailGate';
 import { ProgressBar } from './components/ProgressBar';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
@@ -9,7 +11,6 @@ import { FotfNote } from './components/FotfNote';
 import { ValueMatrix } from './components/ValueMatrix';
 import { LLMState } from './components/LLMState';
 import { Category } from './components/Category';
-import { PlaygroundCard } from './components/PlaygroundCard';
 import { Rules } from './components/Rules';
 import { Footer } from './components/Footer';
 import {
@@ -19,11 +20,25 @@ import {
   llm,
   categoriesIntro,
   categories,
-  playground,
   rules,
 } from './data/content';
 
+function loadEmail(): string {
+  try { return localStorage.getItem('gb-demo1-email') ?? ''; }
+  catch { return ''; }
+}
+
 export default function App() {
+  const [email, setEmail] = useState<string>(loadEmail);
+
+  if (!email) {
+    return (
+      <EmailGate
+        onEnter={(e) => setEmail(e)}
+      />
+    );
+  }
+
   return (
     <>
       <ProgressBar />
@@ -40,12 +55,7 @@ export default function App() {
         </Section>
 
         {/* 02 How AI creates value */}
-        <Section
-          id="value"
-          number="02"
-          title="How AI creates value"
-          className="bg-gb-surface"
-        >
+        <Section id="value" number="02" title="How AI creates value" className="bg-gb-surface">
           <ReactionChain data={value.mechanism} />
           <FotfNote text={value.fotf} />
           <div className="mt-8">
@@ -60,27 +70,15 @@ export default function App() {
         </Section>
 
         {/* 04 Hands-on */}
-        <Section
-          id="hands-on"
-          number="04"
-          title="Hands-on: AI in the office"
-          className="bg-gb-surface"
-        >
+        <Section id="hands-on" number="04" title="Hands-on: AI in the office" className="bg-gb-surface">
           <p className="text-gb-muted leading-relaxed mb-10 max-w-2xl">{categoriesIntro}</p>
           {categories.map((cat) => (
             <Category key={cat.id} data={cat} />
           ))}
         </Section>
 
-        {/* Playground */}
-        <section id="playground" className="py-20">
-          <div className="max-w-5xl mx-auto px-6">
-            <PlaygroundCard data={playground} />
-          </div>
-        </section>
-
         {/* Rules */}
-        <section className="py-20 bg-gb-surface">
+        <section className="py-20">
           <div className="max-w-5xl mx-auto px-6">
             <Rules data={rules} />
           </div>
