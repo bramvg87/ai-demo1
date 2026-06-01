@@ -132,19 +132,13 @@ export const value = {
     ],
     credit: 'Concept based on the Industrie 4.0 framework, RWTH Aachen University.',
   },
-  fotf: 'Factory of the Future, or FOTF, is shorthand for plants that run on connected, real-time data so they can react faster and decide better. (Not everyone uses the term the same way, so when it comes up, this is what we mean.) The AI applied in these programmes today is mostly machine learning, for example vision systems that spot a defect and trigger a response. That is detect-and-react. Today we look at a different lever: using LLMs to make everyday office work faster and better.',
-  office:
-    'On the shopfloor you can often put a number on that value. In the office it is harder. Most of what follows makes you work faster (efficiency) and produce better outcomes (effectiveness). The time saved is real, but hard cash savings are debatable and easy to overclaim. So be honest: aim for faster and better, and treat tangible euro savings as a bonus you prove case by case.',
-  matrix: {
-    xAxis: 'Efficiency (cheaper, less time)',
-    yAxis: 'Effectiveness (better quality)',
-    quadrants: {
-      bottomLeft:  { label: 'Low value',     example: 'Effort with no real gain. Skip it.' },
-      bottomRight: { label: 'Faster',        example: 'Same output, less time. Example: drafting a routine email in seconds.' },
-      topLeft:     { label: 'Better',        example: 'Higher quality, similar effort. Example: a sharper risk review of a contract.' },
-      topRight:    { label: 'Both - the goal', example: 'Better and faster together. Example: a better plan in less time.' },
-    },
-  },
+  lead: 'In manufacturing, value comes down to one thing: the time between a problem appearing and the right action being taken. Every minute in that gap is lost output, scrap or energy. Going digital is the effort to shrink that gap, and AI is the sharpest tool we have for doing it.',
+  diagramCaption: 'Lost output while the chain runs. Shorten the chain, and you protect the value.',
+  shiftA_title: 'Where AI has helped so far',
+  shiftA: 'Mostly machine learning. Vision systems that spot a defect, models that flag a deviation early. This speeds up the first step, noticing the problem. Useful, but it is detect-and-react.',
+  shiftB_title: 'What changes now',
+  shiftB: 'As data becomes structured and available, we can tap into vast amounts of it on demand. The newest lever, LLMs, compresses the slowest and most expensive step of all: working out what to do. It puts the judgement of your most experienced expert within reach of everyone, on any question, in seconds. The whole organisation starts to work at the level of its best people.',
+  leversLead: 'For office work the value of an LLM is simple: do a task faster and with less input, or to a higher standard, and at best both at once.',
 };
 
 // ---- LLM ----
