@@ -4,7 +4,33 @@ import { ToolBadge } from './ToolBadge';
 import { PromptBlock } from './PromptBlock';
 import { HowToUse } from './HowToUse';
 import { FileChip } from './FileChip';
-import type { Lab as LabType } from '../data/content';
+import type { Lab as LabType, LabImage } from '../data/content';
+
+function LabImageBlock({ img }: { img: LabImage }) {
+  return (
+    <div className="rounded-card border border-gb-line overflow-hidden bg-gb-soft/40">
+      <img src={img.src} alt={img.alt} className="w-full object-contain max-h-96" />
+      {(img.caption || img.instruction || img.downloadable) && (
+        <div className="px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center gap-3">
+          <div className="flex-1">
+            {img.caption && <p className="text-gb-muted text-xs mb-0.5">{img.caption}</p>}
+            {img.instruction && <p className="text-gb-ink text-sm font-medium">{img.instruction}</p>}
+          </div>
+          {img.downloadable && (
+            <a
+              href={img.src}
+              download={img.downloadFilename ?? img.src.split('/').pop()}
+              className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-gb-coral text-white text-xs font-semibold hover:bg-gb-coral/90 transition-colors"
+            >
+              <Download className="w-3.5 h-3.5" />
+              Download
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 interface LabProps {
   lab: LabType;
@@ -72,6 +98,9 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
               <PromptBlock text={lab.reusablePrompt} label="Reusable prompt - copy and paste at the start of any chat" />
             </>
           )}
+          {lab.imageFirst && lab.labImages && lab.labImages.map((img, i) => (
+            <LabImageBlock key={i} img={img} />
+          ))}
           {lab.prompt && (
             <PromptBlock text={lab.prompt} />
           )}
@@ -96,28 +125,8 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
               <PromptBlock text={ep.text} label={ep.label} />
             </div>
           ))}
-          {lab.labImages && lab.labImages.map((img, i) => (
-            <div key={i} className="rounded-card border border-gb-line overflow-hidden bg-gb-soft/40">
-              <img src={img.src} alt={img.alt} className="w-full object-contain max-h-96" />
-              {(img.caption || img.instruction || img.downloadable) && (
-                <div className="px-4 py-3 flex flex-col sm:flex-row items-start sm:items-center gap-3">
-                  <div className="flex-1">
-                    {img.caption && <p className="text-gb-muted text-xs mb-0.5">{img.caption}</p>}
-                    {img.instruction && <p className="text-gb-ink text-sm font-medium">{img.instruction}</p>}
-                  </div>
-                  {img.downloadable && (
-                    <a
-                      href={img.src}
-                      download={img.downloadFilename ?? img.src.split('/').pop()}
-                      className="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-btn bg-gb-coral text-white text-xs font-semibold hover:bg-gb-coral/90 transition-colors"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      Download
-                    </a>
-                  )}
-                </div>
-              )}
-            </div>
+          {!lab.imageFirst && lab.labImages && lab.labImages.map((img, i) => (
+            <LabImageBlock key={i} img={img} />
           ))}
           {lab.workflow && lab.workflow.length > 0 && (
             <div>

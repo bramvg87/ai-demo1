@@ -47,6 +47,7 @@ export interface Lab {
   optionalAgent?: string;
   extraPrompts?: { label: string; text: string }[];
   labImages?: LabImage[];
+  imageFirst?: boolean;
 }
 
 export interface Category {
@@ -232,6 +233,7 @@ Text:
         title: 'Email from meeting notes',
         tools: ['Copilot'],
         scenario: 'You have handwritten meeting notes or a rough transcript and need to turn them into a clear follow-up email with a summary and action tracker.',
+        imageFirst: true,
         labImages: [
           {
             src: '/meeting-notes.png',
