@@ -48,6 +48,7 @@ export interface Lab {
   extraPrompts?: { label: string; text: string }[];
   labImages?: LabImage[];
   imageFirst?: boolean;
+  files?: { filename: string; label: string }[];
 }
 
 export interface Category {
@@ -330,12 +331,12 @@ My past emails for style:
       },
       {
         id: 'text-agent',
-        title: 'Agentic AI: a reusable assistant',
-        tools: ['Copilot', 'Claude'],
+        title: 'Create a Copilot agent',
+        tools: ['Copilot'],
         scenario:
-          'You do the same kind of task often. Instead of re-explaining every time, write the instructions once and reuse them. Think of it like briefing a trainee: give the role, the standing instructions and a few examples, and from then on it just does the job. The prompt below is generic, so it works for any operations notes, in any chat, with no special features needed.',
+          'You do the same kind of task often. Instead of pasting a long prompt every time, create a dedicated Copilot agent with the instructions baked in. Your team opens the agent directly and uses it without any setup. This is available in Microsoft 365 Copilot via Copilot Studio.',
         whatYouLearn:
-          'Turn a repeatable task into a reusable prompt you can paste into any chat. Optionally publish it as a Copilot agent later, if your tenant has that enabled.',
+          'Build and publish a custom agent in Microsoft 365 Copilot Studio. Once published, anyone in your organisation can open the agent and use it without copying prompts.',
         reusablePrompt: `You are OpsBrief, an assistant for operations managers in a food manufacturing company. Your one job: turn raw notes, data or transcripts into a clear, structured leadership brief.
 
 Whenever I share material, always produce:
@@ -347,17 +348,18 @@ Whenever I share material, always produce:
 
 Be concise and factual. Never invent numbers. If something is unclear or missing, say so. Respond in English, unless I write in Dutch, then respond in Dutch.`,
         howToUse: [
-          'Copy the prompt above and keep it handy (a saved note, or a saved prompt in your tool).',
-          'At the start of a chat in Copilot or Claude, paste it once to set up the assistant for the session.',
-          'Then paste your notes or attach a file, and it returns the brief.',
-          'Reuse it any time by pasting it again. It is generic, so it fits any operations notes.',
+          'Open Microsoft 365 Copilot (via office.com, Teams, or the Copilot app).',
+          'In the Copilot chat sidebar, click the agent icon or go to "Copilot Studio" from the app launcher.',
+          'Click "Create agent" and choose "Configure" (not Describe) for full control.',
+          'Give the agent a name (for example: OpsBrief) and paste the system prompt above into the Instructions field.',
+          'Optionally: add a knowledge source, for example a SharePoint folder with your standard templates or reference documents.',
+          'Click "Publish". The agent is now available to share with your organisation.',
+          'To use it: open the published agent, attach your notes or data file, and send. No prompt needed.',
         ],
         followUp: `Here are my raw notes from this week's S&OP meeting. Prepare the leadership brief.
 [paste your notes, or attach the sample notes file from this lab]`,
         file: 'sample-meeting-notes.md',
-        optionalAgent:
-          'Level up (only if Microsoft Copilot Agents and the Describe flow are enabled for your tenant): publish this once so the team can reuse it without pasting. Open Copilot Chat, go to Agents, Create a new agent, switch to Describe, paste the prompt, run it, adjust the name, then Publish. Note: in the test view you cannot upload files; publish first, then open the published agent to attach files. This step is optional. The reusable prompt above works on its own.',
-        tip: 'Reusable means write once, use forever. Save it and share it with the team. It needs no special features to work.',
+        tip: 'One agent serves the whole team. Build it once, share the link, and anyone can use it without ever seeing the prompt.',
       },
     ],
   },
@@ -368,7 +370,7 @@ Be concise and factual. Never invent numbers. If something is unclear or missing
     label: 'Images',
     valueTag: 'Win: usable visuals with less back and forth. Mostly better outcomes and quicker iterations.',
     marker: 'Effectiveness (+ Efficiency)',
-    intro: 'Image generators are easy to misuse. Three simple techniques get far better, more usable results.',
+    intro: 'You have already seen what image generation can do. Here are a few practical techniques to get more consistent, useful results rather than just hoping the first attempt works.',
     labs: [
       {
         id: 'images-prompt-first',
@@ -439,19 +441,19 @@ The image should look like it was scanned on an office scanner: slight paper sha
       },
       {
         id: 'images-svg',
-        title: 'Technique 3: editable SVG logo, then refine in Affinity',
+        title: 'Technique 3: generate editable SVG code',
         tools: ['Copilot', 'Claude'],
         scenario:
-          'Image generators give you a flat picture you cannot edit. Ask for SVG instead and you get a true vector you can open and change. Example here: a logo for "Project Octopus", a fictive programme that connects multiple systems into one and improves the user experience.',
+          'Classic image generation gives you a flat picture you cannot edit. Ask for SVG code instead and you get a true vector: every shape, colour and path is editable. This technique is useful when you want control and consistency, for example for logos, icons and diagrams you will reuse. You can paste the code directly into editsvgcode.com to preview and adjust it without any software.',
         prompt: `Create a simple, modern logo for "Project Octopus" as clean SVG code. Project Octopus is an internal programme that connects multiple systems into one and improves the user experience, so an octopus or a connected-nodes motif works well. Style: minimal, geometric, two colours (deep blue #1466E0 and cyan #17B8C9). Requirements: one valid standalone SVG, a set viewBox, no external fonts (use a common web-safe font or convert text to paths), reasonable dimensions. Output only the SVG code in a code block.`,
         workflow: [
-          'Run the prompt in Copilot or Claude.',
-          'Copy the SVG code into a plain text file and save it as project-octopus.svg.',
-          'Open it in Affinity Designer (File, Open). Every shape, colour and curve is now editable.',
-          'Refine, then export to PNG, PDF or SVG.',
+          'Run the prompt.',
+          'Copy the SVG code.',
+          'Go to editsvgcode.com and paste the code. You see the result instantly and can edit any colour, size or shape.',
+          'When happy, click Download to save as SVG, then export to PNG or PDF as needed.',
         ],
         file: 'project-octopus-logo.svg',
-        tip: 'Great for first drafts of logos, icons and simple diagrams that you then polish by hand.',
+        tip: 'Great for first drafts of logos, icons and diagrams. The SVG approach gives you something you can actually change, not just a picture.',
       },
     ],
   },
@@ -471,9 +473,12 @@ The image should look like it was scanned on an office scanner: slight paper sha
         prompt: `Generate a realistic but fictional S&OP dataset as CSV that I can download. 24 rows: 4 product families (Frozen Pizza, Ready Meals, Snack Bars, Soups) across 6 months. Columns: Month, ProductFamily, ForecastUnits, ActualSalesUnits, ProductionUnits, ClosingStockUnits, ForecastAccuracyPct. Make the numbers plausible with some forecast error and mild seasonality, and make one family clearly less accurate than the others. Output only the CSV.`,
         howToUse: [
           'Run it, then download or copy the CSV.',
-          'Or skip this and use the ready demo file below.',
+          'Or skip this and use the ready demo files below (CSV or Excel).',
         ],
-        file: 'sample-snop-data.csv',
+        files: [
+          { filename: 'sample-snop-data.csv',  label: 'CSV' },
+          { filename: 'sample-snop-data.xlsx', label: 'Excel' },
+        ],
       },
       {
         id: 'analysis-questions',
@@ -486,9 +491,30 @@ The image should look like it was scanned on an office scanner: slight paper sha
 
 [Attach the sample data file from this lab, or your own approved export.]`,
         howToUse: [
-          'Attach the CSV.',
+          'Attach the CSV or Excel file.',
           'Paste the prompt.',
           'In Copilot you can do this directly on a real sheet in Excel.',
+        ],
+        extraPrompts: [
+          {
+            label: 'Visualize the data',
+            text: `Using the S&OP data attached, create charts to visualize the following:
+1. A bar chart comparing ForecastUnits vs ActualSalesUnits per product family across all months.
+2. A line chart showing ForecastAccuracyPct per product family over time.
+3. A chart showing ClosingStockUnits trend per product family.
+
+For each chart, add a one-sentence interpretation of what it shows.`,
+          },
+          {
+            label: 'Calculate averages and key statistics',
+            text: `Using the S&OP data attached, calculate the following statistics per product family:
+1. Average forecast accuracy (%) across all 6 months.
+2. Average gap between ForecastUnits and ActualSalesUnits (absolute and as a percentage).
+3. Average closing stock level and the month with the highest and lowest stock.
+4. Month with the largest production deviation from actual sales.
+
+Present the results as a summary table, then highlight the top 2 findings.`,
+          },
         ],
         tip: 'Ask follow-ups. "Show that as a table by month" or "which family looks worst" work well.',
       },
@@ -501,28 +527,51 @@ The image should look like it was scanned on an office scanner: slight paper sha
     label: 'Full document generation',
     valueTag: 'Win: from blank page to a solid draft in minutes. Mostly time saved on structure and first drafts.',
     marker: 'Efficiency (+ Effectiveness)',
-    intro: 'From a blank page to a solid first draft in minutes: templates, outlines and full drafts.',
+    intro: 'From a blank page to a polished first draft in three steps: design a template, generate the outline, then build the full presentation.',
     labs: [
       {
-        id: 'docs-template',
-        title: 'Generate a reusable template',
+        id: 'docs-presentation',
+        title: 'Build a presentation from scratch',
         tools: ['Copilot', 'Claude'],
-        prompt: `Create a reusable template for a monthly operations report for a food manufacturing plant. Include these sections, each with one line of guidance underneath: Safety, Quality and Waste, OEE and Downtime, Energy, Cost and Productivity, Key Risks, Decisions Needed. Output as clean Markdown I can reuse every month.`,
-        file: 'ops-report-template.md',
-      },
-      {
-        id: 'docs-outline',
-        title: 'Generate a presentation outline',
-        tools: ['Claude', 'Copilot'],
-        scenario: 'A fictive 2027 budget round for the Operations business unit of a food manufacturer.',
-        prompt: `Create the outline for a 12-slide presentation for a fictive 2027 budget round for the Operations business unit of a food manufacturer. Audience: business unit leadership at executive committee level. For each slide give a title, 3 to 4 bullet points, and a suggested visual. Cover: context and market, last year's performance, productivity initiatives, capex requests, energy and sustainability, key risks, and the ask. Keep it sharp and executive.`,
-        file: 'budget-presentation-outline.md',
-        howToUse: [
-          'Run the prompt to get the outline.',
-          'In Claude: paste the outline and ask it to draft the speaker content per slide, or build the slides.',
-          'In Office: use Copilot in PowerPoint to turn the outline into slides, and Copilot in Outlook to draft the cover note.',
+        scenario: 'A fictive 2027 budget round for the Operations business unit of a food manufacturer. Three steps: create a template, generate the outline, then build the full deck.',
+        extraPrompts: [
+          {
+            label: 'Step 1 - create (or describe) your template',
+            text: `Design a PowerPoint presentation template for a corporate Operations business unit. Describe the template in detail so I can build it:
+- Colour scheme: deep navy (#0A2540) for headers, white backgrounds, blue (#1466E0) accents, and coral (#FF6B4A) for highlights and call-to-action elements.
+- Font: a clean sans-serif for headings, body text at 18pt minimum for readability on a projector.
+- Slide layouts needed: title slide, agenda, section divider, content slide (title + bullets), two-column slide (text + visual), full-image slide with overlay text, and closing slide.
+- Each slide has the company name bottom-left and page number bottom-right.
+- Tone: confident, executive, not cluttered.
+
+Output a structured description of each layout I can use to build it in PowerPoint, or generate the first 3 slides as an example.`,
+          },
+          {
+            label: 'Step 2 - generate the outline',
+            text: `Create the outline for a 12-slide presentation for a fictive 2027 budget round for the Operations business unit of a food manufacturer. Audience: business unit leadership at executive committee level. For each slide give: slide number, title, 3 to 4 bullet points, and a suggested visual or chart type. Cover: context and market, last year's performance, productivity initiatives, capex requests, energy and sustainability, key risks, and the ask. Keep it sharp and executive.`,
+          },
+          {
+            label: 'Step 3 - build the full presentation',
+            text: `Using the outline below, write the full speaker content for each slide. For every slide provide:
+- The slide title
+- The full bullet text (complete sentences, not fragments)
+- 2 to 3 lines of speaker notes explaining the key message to deliver
+- A specific suggestion for the visual (chart type, data to show, or image idea)
+
+Keep the language executive: confident, concise, data-grounded. Assume the audience has 20 minutes and no patience for filler.
+
+Outline:
+[paste your outline from Step 2 here]`,
+          },
         ],
-        tip: 'Outline first, then build. It keeps the structure tight and saves rework.',
+        howToUse: [
+          'Step 1: run the template prompt to get a detailed design description, then build or apply it in PowerPoint. Or upload your own existing template.',
+          'Step 2: run the outline prompt to get a structured 12-slide plan. Review and adjust before going further.',
+          'Step 3: paste the outline into the full-presentation prompt and let it write the complete content.',
+          'In Copilot for PowerPoint: paste the outline and say "Create a presentation from this outline using my template." Copilot will generate the slides.',
+          'In Copilot in Outlook: use the final deck as input to draft the executive summary email.',
+        ],
+        tip: 'Template first, outline second, content third. Each step is a checkpoint where you can redirect before investing more time.',
       },
     ],
   },

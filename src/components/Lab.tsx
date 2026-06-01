@@ -54,11 +54,6 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
         </span>
         <span className="flex-1 font-display font-semibold text-gb-navy text-sm sm:text-base">{lab.title}</span>
         <div className="flex items-center gap-2">
-          <div className="flex gap-1.5 flex-wrap justify-end">
-            {lab.tools.map((t) => (
-              <ToolBadge key={t} tool={t} />
-            ))}
-          </div>
           <button
             onClick={(e) => { e.stopPropagation(); onToggleDone(); }}
             className="ml-1 text-gb-muted hover:text-gb-blue transition-colors"
@@ -143,10 +138,13 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
               </ol>
             </div>
           )}
-          {lab.file && (
+          {(lab.file || (lab.files && lab.files.length > 0)) && (
             <div className="flex flex-wrap items-center gap-3 mt-1">
               <span className="text-xs font-mono text-gb-muted">Demo file:</span>
-              <FileChip filename={lab.file} />
+              {lab.file && <FileChip filename={lab.file} />}
+              {lab.files && lab.files.map((f) => (
+                <FileChip key={f.filename} filename={f.filename} label={f.label} />
+              ))}
             </div>
           )}
           {lab.optionalAgent && (
