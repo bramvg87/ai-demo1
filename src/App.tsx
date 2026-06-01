@@ -4,7 +4,7 @@ import { ProgressBar } from './components/ProgressBar';
 import { Nav } from './components/Nav';
 import { Hero } from './components/Hero';
 import { Section } from './components/Section';
-import { AILineage } from './components/AILineage';
+import AITimeline from './components/AITimeline';
 import { ReactionChain } from './components/ReactionChain';
 import { FotfNote } from './components/FotfNote';
 import { ValueMatrix } from './components/ValueMatrix';
@@ -49,7 +49,7 @@ export default function App() {
 
         {/* 01 What is AI */}
         <Section id="what-is-ai" number="01" title="What is AI" intro={whatIsAI.intro}>
-          <AILineage />
+          <AITimeline />
         </Section>
 
         {/* 02 How AI creates value */}

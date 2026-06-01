@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 624" width="1320" height="624" font-family="Hanken Grotesk, Arial, sans-serif">
+<defs><marker id="ar" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#C9D6E5"/></marker><marker id="arc" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#0E9DB0"/></marker></defs>
+<text x="1030.0" y="120" text-anchor="middle" font-size="13.5" font-weight="700" fill="#0A2540">The shift happening now</text>
+<text x="1030.0" y="139" text-anchor="middle" font-size="12" fill="#5A6B7B">from a chatbot you visit, to AI inside your apps and machines that acts for you</text>
+<path d="M 845 160 V 151 H 1215 V 160" fill="none" stroke="#2E8FFF" stroke-width="1.6"/>
+<line x1="182" y1="205" x2="194" y2="205" stroke="#C9D6E5" stroke-width="2.5" marker-end="url(#ar)"/>
+<line x1="380" y1="205" x2="392" y2="205" stroke="#C9D6E5" stroke-width="2.5" marker-end="url(#ar)"/>
+<line x1="552" y1="205" x2="581" y2="205" stroke="#C9D6E5" stroke-width="2.5" marker-end="url(#ar)"/>
+<line x1="733" y1="205" x2="766" y2="205" stroke="#C9D6E5" stroke-width="2.5" marker-end="url(#ar)"/>
+<line x1="918" y1="205" x2="958" y2="205" stroke="#C9D6E5" stroke-width="2.5" marker-end="url(#ar)"/>
+<line x1="1096" y1="205" x2="1141" y2="205" stroke="#C9D6E5" stroke-width="2.5" marker-end="url(#ar)"/>
+<text x="105" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0E9DB0" letter-spacing="0.4">1950s-80s</text>
+<rect x="34" y="182" width="142" height="46" rx="23" fill="#EDF1F6" stroke="#5A6B7B" stroke-width="2"/>
+<text x="105" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">Rule-based AI</text>
+<text x="105" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">Hand-coded rules.</text>
+<text x="105" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">No learning.</text>
+<line x1="105" y1="271" x2="105" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<circle cx="105" cy="287" r="3.5" fill="#5A6B7B"/>
+<text x="105" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">1997</text>
+<text x="105" y="323" text-anchor="middle" font-size="11" fill="#5A6B7B">Deep Blue beats Kasparov</text>
+<text x="290" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0E9DB0" letter-spacing="0.4">1990s-2000s</text>
+<rect x="206" y="182" width="168" height="46" rx="23" fill="#E3EDFD" stroke="#1466E0" stroke-width="2"/>
+<text x="290" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">Machine learning</text>
+<text x="290" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">Learns patterns</text>
+<text x="290" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">from data.</text>
+<line x1="290" y1="271" x2="290" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<g class="vid" data-yt="Sp4q60BsHoY" style="cursor:pointer">
+<circle cx="290" cy="287" r="3.5" fill="#E8552F"/>
+<text x="290" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2011</text>
+<text x="290" y="323" text-anchor="middle" font-size="11" fill="#E8552F">Watson wins Jeopardy &#9654;</text>
+</g>
+<text x="475" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0E9DB0" letter-spacing="0.4">2012</text>
+<rect x="404" y="182" width="142" height="46" rx="23" fill="#E6F1FF" stroke="#2E8FFF" stroke-width="2"/>
+<text x="475" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">Deep learning</text>
+<text x="475" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">Many-layered nets.</text>
+<text x="475" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">The big unlock.</text>
+<line x1="475" y1="271" x2="475" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<circle cx="475" cy="287" r="3.5" fill="#5A6B7B"/>
+<text x="475" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2012</text>
+<text x="475" y="323" text-anchor="middle" font-size="11" fill="#5A6B7B">AlexNet wins ImageNet</text>
+<text x="660" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0E9DB0" letter-spacing="0.4">2017</text>
+<rect x="593" y="182" width="133" height="46" rx="23" fill="#FFEAE3" stroke="#E8552F" stroke-width="2"/>
+<text x="660" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">Transformers</text>
+<text x="660" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">Cracked language</text>
+<text x="660" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">and context.</text>
+<line x1="660" y1="271" x2="660" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<circle cx="660" cy="287" r="3.5" fill="#5A6B7B"/>
+<text x="660" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2017</text>
+<text x="660" y="323" text-anchor="middle" font-size="11" fill="#5A6B7B">Attention Is All You Need</text>
+<text x="845" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0E9DB0" letter-spacing="0.4">2018-22</text>
+<rect x="778" y="182" width="133" height="46" rx="23" fill="#FFEAE3" stroke="#E8552F" stroke-width="2"/>
+<text x="845" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">LLMs &amp; GenAI</text>
+<text x="845" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">You chat with it.</text>
+<text x="845" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">Text, images, plans.</text>
+<line x1="845" y1="271" x2="845" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<circle cx="845" cy="287" r="3.5" fill="#5A6B7B"/>
+<text x="845" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2020-22</text>
+<text x="845" y="323" text-anchor="middle" font-size="11" fill="#5A6B7B">GPT-3, then ChatGPT</text>
+<text x="1030" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0E9DB0" letter-spacing="0.4">2023-26</text>
+<rect x="970" y="182" width="120" height="46" rx="23" fill="#E7ECF2" stroke="#0A2540" stroke-width="2"/>
+<text x="1030" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">AI agents</text>
+<text x="1030" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">Inside your apps.</text>
+<text x="1030" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">It acts, not just talks.</text>
+<line x1="1030" y1="271" x2="1030" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<circle cx="1030" cy="287" r="3.5" fill="#5A6B7B"/>
+<text x="1030" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2024-26</text>
+<text x="1030" y="323" text-anchor="middle" font-size="11" fill="#5A6B7B">Agents that take action</text>
+<text x="1215" y="169" text-anchor="middle" font-size="12" font-weight="600" fill="#0A2540" letter-spacing="0.4">next · 2026+</text>
+<rect x="1153" y="182" width="125" height="46" rx="23" fill="#FFFFFF" stroke="#0A2540" stroke-width="2" stroke-dasharray="5 4"/>
+<text x="1215" y="210" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">Physical AI</text>
+<text x="1215" y="247" text-anchor="middle" font-size="12" fill="#5A6B7B">Steps off the screen,</text>
+<text x="1215" y="263" text-anchor="middle" font-size="12" fill="#5A6B7B">into robots &amp; machines.</text>
+<line x1="1215" y1="271" x2="1215" y2="283" stroke="#C9D6E5" stroke-width="1.5"/>
+<circle cx="1215" cy="287" r="3.5" fill="none" stroke="#0A2540" stroke-width="1.5"/>
+<text x="1215" y="307" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2026+</text>
+<text x="1215" y="323" text-anchor="middle" font-size="11" fill="#5A6B7B">Robots that reason &amp; act</text>
+<path d="M 374 205 C 414 277, 460 300, 460 387" fill="none" stroke="#0E9DB0" stroke-width="2.5" marker-end="url(#arc)"/>
+<text x="340" y="414" text-anchor="end" font-size="12" font-weight="600" fill="#0E9DB0">2013-16</text>
+<rect x="350" y="387" width="219" height="46" rx="23" fill="#E2F6F9" stroke="#0E9DB0" stroke-width="2"/>
+<text x="460" y="415" text-anchor="middle" font-size="15.5" font-weight="700" fill="#0E2233">Reinforcement learning</text>
+<text x="460" y="452" text-anchor="middle" font-size="12" fill="#5A6B7B">Learns by trial and reward.</text>
+<path d="M 570 410 C 600 410, 560 488, 590 488" fill="none" stroke="#0E9DB0" stroke-width="1.8"/>
+<line x1="590" y1="488" x2="815" y2="488" stroke="#0E9DB0" stroke-width="1.8"/>
+<g class="vid" data-yt="Ih8EfvOzBOY" style="cursor:pointer">
+<circle cx="620" cy="488" r="4" fill="#E8552F"/>
+<text x="620" y="508" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2013</text>
+<text x="620" y="524" text-anchor="middle" font-size="11" fill="#E8552F">DQN masters Atari &#9654;</text>
+</g>
+<g class="vid" data-yt="8tq1C8spV_g" style="cursor:pointer">
+<circle cx="815" cy="488" r="4" fill="#E8552F"/>
+<text x="815" y="508" text-anchor="middle" font-size="11.5" font-weight="700" fill="#0E2233">2016</text>
+<text x="815" y="524" text-anchor="middle" font-size="11" fill="#E8552F">AlphaGo beats Lee Sedol &#9654;</text>
+</g>
+<path d="M 815 480 C 935 368, 1030 355, 1030 230" fill="none" stroke="#0E9DB0" stroke-width="1.8" stroke-dasharray="2 5"/>
+<text x="950" y="408" text-anchor="middle" font-size="11" fill="#0E9DB0">reward-based learning (RLHF)</text>
+<text x="950" y="424" text-anchor="middle" font-size="11" fill="#0E9DB0">feeds today's agents</text>
+<circle cx="150" cy="588" r="6" fill="#5A6B7B"/>
+<text x="163" y="592" font-size="12" fill="#0E2233">Rule-based</text>
+<circle cx="276.0" cy="588" r="6" fill="#1466E0"/>
+<text x="289.0" y="592" font-size="12" fill="#0E2233">Machine &amp; deep learning</text>
+<circle cx="493.0" cy="588" r="6" fill="#0E9DB0"/>
+<text x="506.0" y="592" font-size="12" fill="#0E2233">Reinforcement learning</text>
+<circle cx="703.0" cy="588" r="6" fill="#E8552F"/>
+<text x="716.0" y="592" font-size="12" fill="#0E2233">Language &amp; generative</text>
+<circle cx="906.0" cy="588" r="6" fill="#0A2540"/>
+<text x="919.0" y="592" font-size="12" fill="#0E2233">AI agents</text>
+<circle cx="1025.0" cy="588" r="6" fill="none" stroke="#0A2540" stroke-width="1.6" stroke-dasharray="3 2.5"/>
+<text x="1038.0" y="592" font-size="12" fill="#0E2233">Emerging / next</text>
+<text x="660.0" y="612" text-anchor="middle" font-size="11.5" fill="#5A6B7B">A simplified lineage. Position shows order, not exact time scale. Click a milestone marked with a triangle to watch the video.</text>
+</svg>
