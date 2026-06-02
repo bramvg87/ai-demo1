@@ -4,6 +4,7 @@ import { ToolBadge } from './ToolBadge';
 import { PromptBlock } from './PromptBlock';
 import { HowToUse } from './HowToUse';
 import { FileChip } from './FileChip';
+import { InboxMockup } from './InboxMockup';
 import type { Lab as LabType, LabImage } from '../data/content';
 
 function LabImageBlock({ img }: { img: LabImage }) {
@@ -131,6 +132,7 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
               <PromptBlock text={ep.text} label={ep.label} />
             </div>
           ))}
+          {lab.showInboxMockup && <InboxMockup />}
           {!lab.imageFirst && lab.labImages && lab.labImages.map((img, i) => (
             <LabImageBlock key={i} img={img} />
           ))}

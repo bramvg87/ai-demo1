@@ -52,6 +52,7 @@ export interface Lab {
   forwardNote?: string;
   bonusTip?: string;
   audienceQuestion?: boolean;
+  showInboxMockup?: boolean;
 }
 
 export interface Category {
@@ -360,6 +361,30 @@ Email:
         file: 'sample_email_plant_manager.pdf',
         bonusTip: 'AI helps you process the content, but you still need a way to manage priority. A simple system that works well: use Pinned emails for the few topics that are strategically important and need to stay visible throughout the day, and Flags for emails that require a response within the next 24 hours. AI processes the information, Outlook manages the priority.',
         tip: 'For anything with confidential content or personal data, use Copilot. Do not paste sensitive emails into public tools.',
+      },
+      {
+        id: 'text-inbox-priority',
+        title: 'Inbox: prioritise what to reply to first',
+        tools: [],
+        audienceQuestion: true,
+        scenario: 'You come out of a meeting to twenty unread emails and no time to read them all. Instead of opening them one by one, you ask Copilot in Outlook to triage your inbox and tell you what to reply to first.',
+        forwardNote: 'Today you ask once and read the answer. With Copilot Pro and the move towards agentic AI, the assistant will scan your whole mailbox on its own, flag deadlines, spot what actually needs you, and offer to draft the replies. The skill you practise here - telling it how you want your inbox judged - is exactly what makes that future version useful.',
+        prompt: `Look at my inbox. Tell me, in priority order, which emails need a reply from me first and why. Flag anything with a deadline or a decision. Push lower-priority threads (FYI only, no clear ask, owned by someone else) to the bottom. End with the single email I should handle right now.`,
+        howToUse: [
+          'Open the Outlook app on your Android phone.',
+          'Tap the Copilot logo in the bottom navigation bar to open the Copilot panel.',
+          'Type or paste the prompt above and send.',
+          'Copilot reads your inbox and returns a prioritised list.',
+          'On desktop: open Outlook, click the Copilot icon in the sidebar or ribbon and ask the same question.',
+        ],
+        extraPrompts: [
+          {
+            label: 'Quick alternative',
+            text: 'What is the most urgent mail to reply to?',
+          },
+        ],
+        showInboxMockup: true,
+        tip: 'The more specific you are about how to judge priority - deadlines, decisions, direct asks - the more useful the answer.',
       },
       {
         id: 'text-agent',
