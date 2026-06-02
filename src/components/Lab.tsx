@@ -52,6 +52,11 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
         <span className="shrink-0 px-2 py-0.5 rounded-pill bg-gb-cyan/10 text-gb-cyan border border-gb-cyan/20 text-xs font-mono font-medium">
           LAB
         </span>
+        {lab.audienceQuestion && (
+          <span className="shrink-0 px-2 py-0.5 rounded-pill bg-gb-coral/10 text-gb-coral border border-gb-coral/20 text-xs font-mono font-medium">
+            Audience question
+          </span>
+        )}
         <span className="flex-1 font-display font-semibold text-gb-navy text-sm sm:text-base">{lab.title}</span>
         <div className="flex items-center gap-2">
           <button

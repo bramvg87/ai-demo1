@@ -51,6 +51,7 @@ export interface Lab {
   files?: { filename: string; label: string }[];
   forwardNote?: string;
   bonusTip?: string;
+  audienceQuestion?: boolean;
 }
 
 export interface Category {
@@ -335,6 +336,7 @@ My past emails for style:
         id: 'text-inbox',
         title: 'Inbox: process a long email fast',
         tools: ['Copilot', 'Claude'],
+        audienceQuestion: true,
         scenario: 'You receive a long email with multiple questions, stakeholders and requested actions. Instead of reading all of it manually, you use AI to summarise it, pull out what is needed from you and draft a reply.',
         forwardNote: 'With Microsoft Copilot Pro and the move towards Agentic AI, it will become possible to search, analyse and prioritise your entire mailbox automatically. An AI agent will be able to identify the important topics, summarise long threads, detect required actions and proactively surface what needs you. That is a powerful example of Agentic AI. For today we focus on the simpler, immediately usable version: optimising a single email.',
         prompt: `You are my executive assistant.
@@ -607,6 +609,7 @@ Outline:
         id: 'docs-onepager',
         title: 'From meeting notes to a one-page presentation',
         tools: ['Claude', 'Copilot'],
+        audienceQuestion: true,
         scenario: 'A good one-pager, scope, resources, objective and result on a single slide, takes a lot of thinking before you open PowerPoint. This lab shows how to go from long, messy meeting notes to a clean one-page summary in two steps: first draft the content and slide outline, then build the actual slide using your own template.',
         extraPrompts: [
           {
