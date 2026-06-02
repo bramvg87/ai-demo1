@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useReveal } from '../lib/useReveal';
 
 const CAT_IMG = '/images/cat-dog-input.png';
+const CAT_ONLY = '/images/cat.png';
 
 // ── image with graceful fallback ────────────────────────────────────────────
 function CatImg({ cropLeft, className }: { cropLeft?: boolean; className?: string }) {
@@ -137,7 +138,12 @@ export function HowModelDecides() {
         <div className="flex flex-col sm:flex-row items-stretch sm:items-start gap-2 sm:gap-0">
 
           <PipeStep caption="A photo goes in.">
-            <CatImg cropLeft className="h-14 w-16 flex-shrink-0" />
+            <img
+              src={CAT_ONLY}
+              alt="A cat"
+              className="h-14 w-16 object-contain rounded-lg flex-shrink-0"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
+            />
           </PipeStep>
 
           <PipeArrow />
@@ -172,22 +178,22 @@ export function HowModelDecides() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {[
             {
-              badge: 'Hard',
-              badgeClass: 'bg-[#fee2e2] text-[#b91c1c] border-[#fca5a5]/40',
-              title: 'Write the rules by hand',
+              badge: 'Rule-based AI',
+              badgeClass: 'bg-[#EDF1F6] text-[#5A6B7B] border-[#5A6B7B]/30',
+              title: 'Write rules manually',
               body: 'Spell out every feature: whiskers, ears, fur. It breaks on the first odd photo, and it is very hard.',
             },
             {
-              badge: 'Most common',
-              badgeClass: 'bg-gb-blue/10 text-gb-blue border-gb-blue/20',
-              title: 'Show it labeled examples',
-              body: 'Thousands of photos tagged cat or dog, and it learns the pattern itself. This is the common approach (supervised learning).',
+              badge: 'Supervised learning',
+              badgeClass: 'bg-[#E3EDFD] text-gb-blue border-gb-blue/30',
+              title: 'Label thousands of examples',
+              body: 'Tag thousands of photos as cat or dog. The model learns the pattern itself. This is the most common approach.',
             },
             {
-              badge: 'Finds structure',
-              badgeClass: 'bg-gb-cyan/10 text-gb-cyan border-gb-cyan/20',
-              title: 'Let it group by itself',
-              body: 'Give it photos with no tags and it clusters similar ones on its own (unsupervised learning, or clustering).',
+              badge: 'Unsupervised learning',
+              badgeClass: 'bg-[#E2F6F9] text-[#0E9DB0] border-[#0E9DB0]/30',
+              title: 'Let it cluster by itself',
+              body: 'Give it images with no labels and it clusters similar ones on its own, learning from much larger datasets.',
             },
           ].map(({ badge, badgeClass, title, body }) => (
             <div key={title} className="rounded-xl bg-gb-surface border border-gb-line px-4 py-4 shadow-card">
