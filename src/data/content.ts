@@ -49,6 +49,8 @@ export interface Lab {
   labImages?: LabImage[];
   imageFirst?: boolean;
   files?: { filename: string; label: string }[];
+  forwardNote?: string;
+  bonusTip?: string;
 }
 
 export interface Category {
@@ -330,6 +332,34 @@ My past emails for style:
         tip: 'The more you use Copilot in Outlook, the better it learns your style from your own mailbox. Giving examples speeds that up.',
       },
       {
+        id: 'text-inbox',
+        title: 'Inbox: process a long email fast',
+        tools: ['Copilot', 'Claude'],
+        scenario: 'You receive a long email with multiple questions, stakeholders and requested actions. Instead of reading all of it manually, you use AI to summarise it, pull out what is needed from you and draft a reply.',
+        forwardNote: 'With Microsoft Copilot Pro and the move towards Agentic AI, it will become possible to search, analyse and prioritise your entire mailbox automatically. An AI agent will be able to identify the important topics, summarise long threads, detect required actions and proactively surface what needs you. That is a powerful example of Agentic AI. For today we focus on the simpler, immediately usable version: optimising a single email.',
+        prompt: `You are my executive assistant.
+
+Analyse the email below and give me:
+1. A 3-bullet executive summary
+2. The actions specifically requested from me
+3. Any deadlines or commitments mentioned, with dates
+4. Risks or important points that need my attention
+5. A professional reply draft in a collaborative tone
+
+Keep it concise and easy to scan.
+
+Email:
+[Paste or upload the email here]`,
+        howToUse: [
+          'Upload the sample email PDF from this lab, or paste a real email.',
+          'Paste the prompt and send.',
+          'In Outlook with Copilot: you do not need to copy-paste at all. Click the Copilot icon on an open email, or use the Copilot sidebar, and ask the same questions directly.',
+        ],
+        file: 'sample_email_plant_manager.pdf',
+        bonusTip: 'AI helps you process the content, but you still need a way to manage priority. A simple system that works well: use Pinned emails for the few topics that are strategically important and need to stay visible throughout the day, and Flags for emails that require a response within the next 24 hours. AI processes the information, Outlook manages the priority.',
+        tip: 'For anything with confidential content or personal data, use Copilot. Do not paste sensitive emails into public tools.',
+      },
+      {
         id: 'text-agent',
         title: 'Create a Copilot agent',
         tools: ['Copilot'],
@@ -572,6 +602,50 @@ Outline:
           'In Copilot in Outlook: use the final deck as input to draft the executive summary email.',
         ],
         tip: 'Template first, outline second, content third. Each step is a checkpoint where you can redirect before investing more time.',
+      },
+      {
+        id: 'docs-onepager',
+        title: 'From meeting notes to a one-page presentation',
+        tools: ['Claude', 'Copilot'],
+        scenario: 'A good one-pager, scope, resources, objective and result on a single slide, takes a lot of thinking before you open PowerPoint. This lab shows how to go from long, messy meeting notes to a clean one-page summary in two steps: first draft the content and slide outline, then build the actual slide using your own template.',
+        extraPrompts: [
+          {
+            label: 'Step 1 - draft the content and slide outline',
+            text: `Act as a senior continuous improvement consultant.
+
+I will give you the full notes from a meeting. Read them carefully and produce the content for a one-page executive summary presentation.
+
+Generate:
+1. A clear slide title
+2. Background / problem statement (2 to 3 lines)
+3. Objective and scope
+4. Key findings and root causes
+5. Improvements made
+6. Measurable results, shown as before vs after with the key numbers
+7. Next steps with owners
+
+Then propose a one-slide OUTLINE: describe how the content should be arranged on a single slide (which sections, where the key KPIs go, which visual elements to use, and the suggested order). Keep the language executive-level and decision focused.
+
+Meeting notes:
+[Paste or upload the notes here]`,
+          },
+          {
+            label: 'Step 2 - build the slide from your template',
+            text: `I have uploaded a slide that should serve as the visual template (layout, colours, fonts, logo placement).
+
+Using the content and the outline from the previous step, create a one-page presentation that matches the style and structure of the uploaded template slide.
+
+Keep it concise and executive-level. Use short headlines, clear sections, and put the key before/after KPIs in a prominent position. Stay within a single slide.`,
+          },
+        ],
+        howToUse: [
+          'Upload the sample Kaizen notes PDF from this lab, or paste your own meeting notes.',
+          'Run Step 1 to get the structured content and slide outline. Review and adjust if needed.',
+          'Upload a template slide (your house style: layout, colours, logo). Run Step 2 to generate the one-pager.',
+          'The same two-step pattern works for any template: project proposals, business cases, one-pagers.',
+        ],
+        file: 'sample_kaizen_meeting_notes.pdf',
+        tip: 'Claude generally produces stronger results than Copilot for conceptual thinking and structured one-pagers. Worth comparing both and keeping the better output.',
       },
     ],
   },

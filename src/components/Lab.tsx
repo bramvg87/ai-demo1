@@ -87,6 +87,12 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
               <p className="text-gb-ink text-sm leading-relaxed">{lab.whatYouLearn}</p>
             </div>
           )}
+          {lab.forwardNote && (
+            <div className="rounded-xl bg-gb-soft border border-gb-blue/20 px-4 py-3">
+              <p className="text-xs font-mono uppercase tracking-widest text-gb-blue mb-1.5">What is coming next</p>
+              <p className="text-gb-ink text-sm leading-relaxed">{lab.forwardNote}</p>
+            </div>
+          )}
           {lab.reusablePrompt && (
             <>
               <p className="text-xs font-mono uppercase tracking-widest text-gb-muted">Reusable assistant prompt</p>
@@ -151,6 +157,12 @@ export function Lab({ lab, isDone, onToggleDone }: LabProps) {
             <div className="rounded-xl bg-gb-soft border border-gb-line px-4 py-3">
               <p className="text-xs font-mono uppercase tracking-widest text-gb-muted mb-1">Level up (optional)</p>
               <p className="text-gb-ink text-xs leading-relaxed">{lab.optionalAgent}</p>
+            </div>
+          )}
+          {lab.bonusTip && (
+            <div className="rounded-xl bg-gb-soft border border-gb-line px-4 py-3">
+              <p className="text-xs font-mono uppercase tracking-widest text-gb-muted mb-1">Personal productivity tip</p>
+              <p className="text-gb-ink text-sm leading-relaxed">{lab.bonusTip}</p>
             </div>
           )}
           {lab.tip && (
